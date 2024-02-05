@@ -8,7 +8,7 @@
 
   const sendData = async () => {
     try {
-    const response = await axios.post('http://xtriks.local/BACK/insert_data.php', {name, age, email})
+    const response = await axios.post('https://xtriks.com/api/insert_data.php', {name, age, email})
     goto('/clients')
     } catch (error) {
       console.log(error);

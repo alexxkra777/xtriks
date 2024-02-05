@@ -7,7 +7,7 @@
 	import { onMount } from "svelte";
 
 	const getPosts = async () => {
-		const res = await fetch("http://xtriks.local/BACK/customer/read.php");
+		const res = await fetch("https://xtriks.com/api/customers/read.php");
 		const data = await res.json();
 		console.log(data);
 		return data;
