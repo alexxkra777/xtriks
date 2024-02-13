@@ -1,5 +1,4 @@
 <script>
-	export let schedule;
 	const date = new Date();
 	
 	const today = {
@@ -70,7 +69,7 @@
 													monthIndex === today.month &&
 													year === today.year}
 						data-dateID={`${month}_${(i-firstDayIndex)+1}_${year}`}
-						class:has-appts={`${month}_${(i-firstDayIndex)+1}_${year}` in schedule}
+						class:has-appts={`${month}_${(i-firstDayIndex)+1}_${year}`}
 						on:click>
 					{(i - firstDayIndex) + 1}
 				</li>

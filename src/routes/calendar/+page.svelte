@@ -1,6 +1,4 @@
 <script>
-    import { onDestroy } from 'svelte';
-    import scheduleStore from '../../components/schedule-store.js';
     import Calendar from '../../components/Calendar.svelte';
     import Sidebar from "../../components/menu/Sidebar.svelte";
     import Account from "../../components/Account.svelte";
@@ -10,14 +8,6 @@
     import { fade, fly } from 'svelte/transition';
     import { createEventDispatcher } from 'svelte';
 
-    let schedule = {};
-    const unsubscribe = scheduleStore.subscribe(currState => {
-        schedule = currState;
-    });
-    
-    onDestroy(() => {
-        if (unsubscribe) unsubscribe();
-    });
     
     let schedulerShowing = false;    
     let dateID = "";
@@ -30,8 +20,6 @@
     let client_id = "1";
 
     let list = writable([]);
-    
-    const dispatch = createEventDispatcher();
 
     const makeDateHeading = () => {
         let dateAsHeading = dateID.replace(/_/g, " ");
@@ -45,18 +33,18 @@
         makeDateHeading();
         console.log("open modal");
         console.log(dateID)
-		readData()
+		//readData()
     }
 
-	const readData = async () => {
-		try {
-            const response = await axios.post('https://xtriks.com/api/appointment/function.php', {dateID});
-            list.set(response.data);
-            console.log(list); // Assuming your PHP file responds with some data
-        } catch (error) {
-            console.error('Error:', error);
-        }
-	}
+	// const readData = async () => {
+	// 	try {
+    //         const response = await axios.post('https://xtriks.com/api/appointment/function.php', {dateID});
+    //         list.set(response.data);
+    //         console.log(list); // Assuming your PHP file responds with some data
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //     }
+	// }
     
 
     
@@ -70,7 +58,7 @@
         try {
             const response = await axios.post('https://xtriks.com/api/insert_data_calendar.php', { date_id ,eventName, hour, minutes, user_id, client_id });
             console.log(response.data); // Assuming your PHP file responds with some data
-			readData();
+			//readData();
         } catch (error) {
             console.error('Error:', error);
         }
@@ -81,7 +69,7 @@
     <Sidebar></Sidebar>
     <Account></Account>
     <div class="calendar">
-        <Calendar on:click={handleScheduler} {schedule} />
+        <Calendar on:click={handleScheduler} />
         {#if schedulerShowing}
             <section transition:fade={{ duration: 125 }}>
                 <form method="post" id={dateID} on:submit|preventDefault={submitAppt}>
@@ -94,16 +82,16 @@
                         <input type="text" id="event-input" required placeholder="Add an event..." bind:value={eventName}>
                         <div id="time-cont">
                             <div id="hrs-mins-cont">
-                                <input type="number" id="time-input" name="time" min="1" max="24" step="1" placeholder="Hr." bind:value={hour}>
+                                <input type="number" id="timeHour-input" name="timeHour" min="1" max="24" step="1" placeholder="Hr." bind:value={hour}>
                                 <span id="time-colon">:</span>
-                                <input type="number" id="time-input" name="time" min="0" max="59" step="1" placeholder="Mins." bind:value={minutes}>
+                                <input type="number" id="timeMinutes-input" name="timeMinutes" min="0" max="59" step="1" placeholder="Mins." bind:value={minutes}>
                             </div>   
                         </div>
                         <div>
                             <button class="addBtn">Add</button>
                         </div>  
                     </header>
-                    {#each $list as item (item.id)}
+                	{#each $list as item (item.id)}
                         <div>{item.event_name}</div>
                     {/each}
                 </form>
