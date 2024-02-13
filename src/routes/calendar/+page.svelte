@@ -33,18 +33,18 @@
         makeDateHeading();
         console.log("open modal");
         console.log(dateID)
-		//readData()
+		readData()
     }
 
-	// const readData = async () => {
-	// 	try {
-    //         const response = await axios.post('https://xtriks.com/api/appointment/function.php', {dateID});
-    //         list.set(response.data);
-    //         console.log(list); // Assuming your PHP file responds with some data
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //     }
-	// }
+	const readData = async () => {
+		try {
+            const response = await axios.post('https://xtriks.com/api/appointment/function.php', {dateID});
+            list.set(response.data);
+            console.log(list); // Assuming your PHP file responds with some data
+        } catch (error) {
+            console.error('Error:', error);
+        }
+	}
     
 
     
@@ -58,7 +58,7 @@
         try {
             const response = await axios.post('https://xtriks.com/api/insert_data_calendar.php', { date_id ,eventName, hour, minutes, user_id, client_id });
             console.log(response.data); // Assuming your PHP file responds with some data
-			//readData();
+			readData();
         } catch (error) {
             console.error('Error:', error);
         }
