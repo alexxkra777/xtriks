@@ -1,5 +1,6 @@
 <script>
 	export let showModal; // boolean
+	import icon from "$lib/gallery/close_icon.png"
 
 	let dialog; // HTMLDialogElement
 
@@ -19,7 +20,7 @@
 		<slot />
 		<hr />
 		<!-- svelte-ignore a11y-autofocus -->
-		<button autofocus on:click={() => dialog.close()}>close modal</button>
+		<button autofocus on:click={() => dialog.close()}><img src={icon} alt="icon"></button>
 	</div>
 </dialog>
 

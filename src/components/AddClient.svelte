@@ -11,7 +11,7 @@
         border-radius: 50%;
         background-color: #e5d5d1;
         border: 3px solid #83464F;
-        margin-top: 10%;
+        margin-top: 55%;
         margin-left: 5%;
     }
     div:hover{

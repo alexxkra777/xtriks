@@ -1,19 +1,26 @@
 <script>
     import icon from "$lib/gallery/icon.png"
+    import { goto } from '$app/navigation';
+
+    function signOut(key) {
+        localStorage.removeItem(key);
+        goto("../")
+    }
 </script>
-<a href="../../">
-    <div class="icon">
+    <button class="icon" on:click={() => signOut('email')}>
         <img src={icon} alt="icon">
-    </div>    
-</a>
+    </button>    
 <style>
+    button {
+        border: none;
+        background: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+    }
     .icon{
         height: 50px;
         width: 50px;
-        position: absolute;
-        right: 0;
-        margin-right: 5%;
-        margin-top: 1%;
     }
     img{
         height: 45px;

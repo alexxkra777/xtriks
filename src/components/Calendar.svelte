@@ -161,4 +161,10 @@
 	.days li.has-appts {
 		color: #F2480A;
 	}
+
+	@media screen and (max-width: 600px) {
+		.weekdays li {
+			width: 10.6%;
+		}
+	}
 </style>

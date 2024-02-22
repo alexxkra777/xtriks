@@ -1,13 +1,42 @@
 <script>
     import Calendar from '../../components/Calendar.svelte';
     import Sidebar from "../../components/menu/Sidebar.svelte";
-    import Account from "../../components/Account.svelte";
     import axios from 'axios';
     import { writable } from 'svelte/store';
     import Appointment from '../../components/Appointment.svelte';
     import { fade, fly } from 'svelte/transition';
     import { createEventDispatcher } from 'svelte';
+    import { goto } from '$app/navigation';
+    import { onMount } from 'svelte';
 
+    let storeEmail = null;
+
+    onMount(async () => {
+        const storedData = localStorage.getItem('email');
+        storeEmail = storedData ? JSON.parse(storedData) : null;
+
+        if(storeEmail == "" || storeEmail == null){
+            goto('../login');
+        }
+
+        try {
+            const response = await axios.post('https://xtriks.com/api/authorization/function.php', { storeEmail });
+            console.log(response.data);
+            response.data.forEach(item => {
+                user_id = item.id; // You can write the data to the console or use it as needed
+            });
+            if(response.data == "error"){
+                goto('../login')
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            // Redirect or handle error appropriately
+        }
+    });
+
+
+
+    
     
     let schedulerShowing = false;    
     let dateID = "";
@@ -16,7 +45,7 @@
     let eventName = "";
     let hour = "";
     let minutes = "";
-    let user_id = "1";
+    let user_id;
     let client_id = "1";
 
     let list = writable([]);
@@ -38,7 +67,7 @@
 
 	const readData = async () => {
 		try {
-            const response = await axios.post('https://xtriks.com/api/appointment/function.php', {dateID});
+            const response = await axios.post('https://xtriks.com/api/appointment/function.php', {dateID, user_id});
             list.set(response.data);
             console.log(list); // Assuming your PHP file responds with some data
         } catch (error) {
@@ -67,7 +96,6 @@
 
 <main>
     <Sidebar></Sidebar>
-    <Account></Account>
     <div class="calendar">
         <Calendar on:click={handleScheduler} />
         {#if schedulerShowing}
@@ -240,4 +268,10 @@
         background-color: hsl(168, 76%, 100%);
         color: hsl(168, 76%, 25%);
     }   
+    @media screen and (max-width: 600px) {
+		.calendar{
+            margin-left: 0px;
+            margin-right: 0px;
+		}
+	}
 </style>

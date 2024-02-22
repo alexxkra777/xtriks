@@ -1,37 +1,62 @@
 <script>
-
+    import { writable } from 'svelte/store';
     import Sidebar from "../../components/menu/Sidebar.svelte";
     import Client from "../../components/client.svelte";
-    import Account from "../../components/Account.svelte";
     import AddClient from "../../components/AddClient.svelte";
-	import { onMount } from "svelte";
+    import { onMount } from "svelte";
+    import { goto } from '$app/navigation';
+    import axios from 'axios';
 
-	const getPosts = async () => {
-		const res = await fetch("https://xtriks.com/api/customers/read.php");
-		const data = await res.json();
-		console.log(data);
-		return data;
-	}
+    let storeEmail = null;
+    let user_id;
+    let list = writable([]);
+
+    onMount(async () => {
+        const storedData = localStorage.getItem('email');
+        storeEmail = storedData ? JSON.parse(storedData) : null;
+
+        try {
+            const response = await axios.post('https://xtriks.com/api/authorization/function.php', { storeEmail });
+            console.log(response.data);
+            if (Array.isArray(response.data) && response.data.length > 0) {
+                user_id = response.data[0].id; // Assuming you only need the first user_id
+            } else {
+                goto('../login');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+        console.log(storeEmail);
+        await getPosts(); // Fetch posts after user_id is set
+    });
+
+    const getPosts = async () => {
+        try {
+            const response = await axios.post('https://xtriks.com/api/clients/function.php', { user_id });
+            console.log(response.data);
+            list.set(response.data);
+            console.log(list); // Assuming your PHP file responds with some data
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
 </script>
-
-<Account></Account>
 
 <Sidebar></Sidebar>
 
 <div class="flexbox">
-    {#await getPosts()}
-	<p>Loading...</p>
-    {:then data}
-        {#each data as { name, age }}
-            <Client name={name} age={age}>
-            </Client>
+    {#if $list.length > 0}
+        {#each $list as item (item.id)}
+            <Client name={item.name}></Client>
         {/each}
-    {/await}
+    {:else}
+        <p>Loading...</p>
+    {/if}
     <AddClient></AddClient>
 </div>
 
 <style>
-    .flexbox{
+    .flexbox {
         display: flex;
         flex-wrap: wrap;
         margin-left: 400px;
@@ -39,7 +64,12 @@
         margin-right: 5px;
         padding-top: 50px;
     }
+
+    @media screen and (max-width: 600px) {
+        .flexbox {
+            margin-left: 0px;
+            margin-right: 0px;
+            gap: 50px;
+        }
+    }
 </style>
-
-
-

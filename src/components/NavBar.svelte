@@ -4,25 +4,13 @@
             <li>
                 <a href="../../">Logo</a>
             </li>
-            <li>
-                <a href="../../product">Produkt</a>
-            </li>
-            <li>
-                <a href="../../price">Ceník</a>
-            </li>
-            <li>
-                <a href="../../about">O nás</a>
-            </li>
-            <li>
-                <a href="../../contact">Kontakty</a>
-            </li>
         </ul>
         <ul class="login">
             <li>
-                <a href="../../calendar">Přihlásit se</a>
+                <a href="../../login">Přihlásit se</a>
             </li>
             <li>
-                <a href="../../calendar">Registrovat se</a>
+                <a href="../../sign_in">Registrovat se</a>
             </li>
         </ul>
     </div>
@@ -37,26 +25,14 @@
                 <li>
                     <a href="../../">Domácí stránka</a>
                 </li>
-                <li>
-                    <a href="../../product">Produkt</a>
-                </li>
-                <li>
-                    <a href="../../price">Ceník</a>
-                </li>
-                <li>
-                    <a href="../../about">O nás</a>
-                </li>
-                <li>
-                    <a href="../../contact">Kontakty</a>
-                </li>
                 <li></li>
                 <li></li>
                 <li></li>
                 <li>
-                    <a href="../../calendar">Přihlásit se</a>
+                    <a href="../../login">Přihlásit se</a>
                 </li>
                 <li>
-                    <a href="../../calendar">Registrovat se</a>
+                    <a href="../../sign_in">Registrovat se</a>
                 </li>
             </ul>
         </div>
