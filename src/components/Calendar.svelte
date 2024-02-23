@@ -7,7 +7,7 @@
 		year: date.getFullYear(),
 	}
 	
-	const monthNames = [ "Leden", "test", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"];
+	const monthNames = [ "Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"];
 	let monthIndex = date.getMonth();
 	// const currentMonth = date.toLocaleString('en-US', { month: 'long' })
 	$: month = monthNames[monthIndex];
@@ -121,31 +121,32 @@
 	.weekdays {
 		margin: 0;
 		padding: 10px 0;
-		background-color:#ddd;
+		background-color:#e5d5d1;
 	}
 
 	.weekdays li {
 		display: inline-block;
 		width: 13.6%;
-		color: #666;
+		color: #83464F;
 		text-align: center;
 	}
 
 	/* Days (1-31) */
 	.days {
 		padding: 10px 0;
-		background: #eee;
+		background: white;
 		margin: 0;
+		position: relative;
+    	text-align: center;
 	}
 
 	.days li {
 		list-style-type: none;
 		display: inline-block;
-		border: 1px solid black;
+		border: 2px solid #83464F;
 		padding: 35px 10px;
 		width: 11.6%;
 		text-align: center;
-		margin-bottom: 1px;
 		font-size: 1.2rem;
 		color: #777;
 		cursor: pointer;
@@ -154,12 +155,12 @@
 	/* Highlight the "current" day */
 	.active {
 		padding: 5px;
-		background: #F2EB16;
+		background: #e5d5d1;
 		color: white;
 	}
 	
 	.days li.has-appts {
-		color: #F2480A;
+		color: #83464F;
 	}
 
 	@media screen and (max-width: 600px) {

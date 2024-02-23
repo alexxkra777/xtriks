@@ -2,7 +2,7 @@
 	import Form from '../../components/Form.svelte';
 	import ProgressBar from '../../components/ProgressBar.svelte';
   import BackArrow from "../../components/BackArrow.svelte";
-	let steps = ['Info', 'Address', 'Zaregistrováno'], currentActive = 1, progressBar;
+	let steps = ['Info', 'Adresa', 'Registrace'], currentActive = 1, progressBar;
 	
 	const handleProgress = (stepIncrement) => {
 		progressBar.handleProgress(stepIncrement)
@@ -18,8 +18,8 @@
 		<Form active_step={steps[currentActive-1]}/>
 
 		<div class="step-button">
-			<button class="btn" on:click={() => handleProgress(-1)} disabled={currentActive == 1}>Prev</button>
-			<button class="btn" on:click={() => handleProgress(+1)} disabled={currentActive == steps.length}>Next</button>
+			<button class="btn" on:click={() => handleProgress(-1)} disabled={currentActive == 1}>Zpátky</button>
+			<button class="btn" on:click={() => handleProgress(+1)} disabled={currentActive == steps.length}>Dále</button>
 		</div>		
 	</div>	  
 </main>
@@ -43,8 +43,8 @@
 	}
 
 	.btn {
-		background-color: #3498db;
-		color: #fff;
+		background-color: #83464F;
+		color: #e5d5d1;
 		border: 0;
 		border-radius: 6px;
 		cursor: pointer;
@@ -63,8 +63,9 @@
 	}
 
 	.btn:disabled {
-		background-color: #e0e0e0;
+		background-color: #e5d5d1;
 		cursor: not-allowed;
+    color: #fff;
 	}
 	
 	.step-button{

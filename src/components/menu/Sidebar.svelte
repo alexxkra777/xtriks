@@ -11,10 +11,10 @@
             <li>
                 <a href="../../clients">Klienti</a>
             </li>
-            <li>
-                <Account></Account>
-            </li>
         </ul>
+        <div class="acc">
+            <Account></Account>
+        </div>
     </div>
             
     <nav role="navigation">
@@ -29,6 +29,17 @@
                 </li>
                 <li>
                     <a href="../../clients">Klienti</a>
+                </li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li>
+                    <Account></Account>
                 </li>
             </ul>
         </div>
@@ -52,7 +63,11 @@
         overflow: auto;
     }
     .menu{
+        margin-top: 22em;
         list-style-type: none;
+    }
+    .menu li{
+        margin-top: 2em;
     }
     .menu li a{
         text-decoration: none;
@@ -65,6 +80,11 @@
     }
     #menuToggle{
         display: none;
+    }
+    .acc{
+        position: fixed;
+        bottom: 2em;
+        left: 3em;
     }
     @media screen and (max-width: 600px) {
         .navbar{

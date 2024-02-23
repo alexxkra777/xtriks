@@ -1,6 +1,7 @@
 <script>
 	export let showModal; 
-	import icon from "$lib/gallery/close_icon.png"
+	import close from "$lib/gallery/close_icon.png";
+    import icon from "$lib/gallery/icon.png";
 
 	let dialog; 
 
@@ -13,15 +14,19 @@
 	on:click|self={() => dialog.close()}
 >
 	<div on:click|stopPropagation>
-		<button autofocus on:click={() => dialog.close()}><img src={icon} alt="icon" class="close"></button>
-		<slot name="header" />
+		<button class="button" autofocus on:click={() => dialog.close()}><img src={close} alt="close" class="close"></button>
+        <div class="centerDiv">
+            <img src={icon} alt="icon">
+		    <slot name="header" class="header" />
+            <slot name="button" class="btn"></slot>
+        </div>
 	</div>
 </dialog>
 
 <style>
 	dialog {
 		width: 20em;
-		height: 15em;
+		height: 17em;
 		border-radius: 0.2em;
 		border: none;
 		padding: 0;
@@ -56,7 +61,7 @@
 			opacity: 1;
 		}
 	}
-	button {
+	.button {
 		display: block;
 		border: none;
 		margin: 0;
@@ -72,4 +77,12 @@
 		height: 40px;
 		cursor: pointer;
 	}
+    .centerDiv{
+        text-align: center;
+    }
+    @media screen and (max-width: 600px) {
+        dialog{
+            margin-right: 6em;
+        }
+    }
 </style>

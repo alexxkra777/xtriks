@@ -3,11 +3,10 @@
     import Sidebar from "../../components/menu/Sidebar.svelte";
     import axios from 'axios';
     import { writable } from 'svelte/store';
-    import Appointment from '../../components/Appointment.svelte';
     import { fade, fly } from 'svelte/transition';
-    import { createEventDispatcher } from 'svelte';
     import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
+    import close from "$lib/gallery/close_icon.png";
 
     let storeEmail = null;
 
@@ -21,16 +20,15 @@
 
         try {
             const response = await axios.post('https://xtriks.com/api/authorization/function.php', { storeEmail });
-            console.log(response.data);
+            //console.log(response.data);
             response.data.forEach(item => {
-                user_id = item.id; // You can write the data to the console or use it as needed
+                user_id = item.id;
             });
             if(response.data == "error"){
                 goto('../login')
             }
         } catch (error) {
             console.error('Error:', error);
-            // Redirect or handle error appropriately
         }
     });
 
@@ -45,6 +43,8 @@
     let eventName = "";
     let hour = "";
     let minutes = "";
+    let hourEND = "";
+    let minutesEND = "";
     let user_id;
     let client_id = "1";
 
@@ -85,7 +85,7 @@
 		let date_id = dateID;
         // Send data to PHP file using Axios
         try {
-            const response = await axios.post('https://xtriks.com/api/insert_data_calendar.php', { date_id ,eventName, hour, minutes, user_id, client_id });
+            const response = await axios.post('https://xtriks.com/api/insert_data_calendar.php', { date_id ,eventName, hour, minutes, hourEND, minutesEND, user_id, client_id });
             console.log(response.data); // Assuming your PHP file responds with some data
 			readData();
         } catch (error) {
@@ -102,17 +102,22 @@
             <section transition:fade={{ duration: 125 }}>
                 <form method="post" id={dateID} on:submit|preventDefault={submitAppt}>
                     <div id="closer-cont">
-                        <span on:click={() => closeScheduler()} class="close" title="Close Modal">&times;</span>
+                        <span on:click={() => closeScheduler()} class="close" title="Close Modal"><img src={close} alt="close"></span>
                     </div>
                     <header>
                         <h2>My Schedule for</h2>
                         <h2>{dateHeading}</h2>
                         <input type="text" id="event-input" required placeholder="Add an event..." bind:value={eventName}>
                         <div id="time-cont">
-                            <div id="hrs-mins-cont">
-                                <input type="number" id="timeHour-input" name="timeHour" min="1" max="24" step="1" placeholder="Hr." bind:value={hour}>
-                                <span id="time-colon">:</span>
-                                <input type="number" id="timeMinutes-input" name="timeMinutes" min="0" max="59" step="1" placeholder="Mins." bind:value={minutes}>
+                            <div class="hrs-mins-cont">
+                                <input type="number" class="timeHour-input" name="timeHour" min="1" max="24" step="1" placeholder="Hr." bind:value={hour}>
+                                <span class="time-colon">:</span>
+                                <input type="number" class="timeMinutes-input" name="timeMinutes" min="0" max="59" step="1" placeholder="Mins." bind:value={minutes}>
+                            </div>   
+                            <div class="hrs-mins-cont">
+                                <input type="number" class="timeHour-input" name="timeHour" min="1" max="24" step="1" placeholder="Hr." bind:value={hourEND}>
+                                <span class="time-colon">:</span>
+                                <input type="number" class="timeMinutes-input" name="timeMinutes" min="0" max="59" step="1" placeholder="Mins." bind:value={minutesEND}>
                             </div>   
                         </div>
                         <div>
@@ -143,13 +148,9 @@
         background-color: white;
     }
     
-    h1 {
-        text-align: center;
-        color: gray;
-    }
-    
     h2 {
         margin: 5px 0;
+        color: #83464F;
     }
     
     /* Bordered form */
@@ -182,8 +183,9 @@
         cursor: pointer;
     }
 
-    .close:hover {
-        background-color: hsl(168, 76%, 40%);
+    .close img{
+        height: 45px;
+        width: 45px;
     }
 
     /* Style the header */
@@ -191,7 +193,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: hsl(33, 92%, 29%);
+        background-color: #e5d5d1;
         padding: 30px 40px;
         color: white;
     }
@@ -203,13 +205,13 @@
         margin-bottom: 10px;
     }
     
-    #hrs-mins-cont {
+    .hrs-mins-cont {
         width: 200px;
         display: flex;
         justify-content: space-between;
     }
     
-    #time-colon {
+    .time-colon {
         font-size: 3rem;
     }
     
@@ -248,20 +250,20 @@
     .addBtn {
         padding: 10px;
         width: 160%;
-        background: hsl(168, 76%, 40%);
+        background: #83464F;
         color: #FFF;
         float: left;
         text-align: center;
         font-size: 16px;
         cursor: pointer;
         transition: 0.1s;
-        border: 1px solid hsl(168, 76%, 40%);
+        border: 1px solid #83464F;
         border-radius: 0;
     }
 
     .addBtn:hover {
         border: 1px solid white;
-        background-color: hsl(168, 76%, 35%);
+        background-color:#83464F;
     }   
 
     .addBtn:active {
