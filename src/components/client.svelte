@@ -1,7 +1,6 @@
 <script>
     import Modal from './ModalWindow.svelte';
     import trash from "$lib/gallery/trash.png";
-    import { goto } from '$app/navigation';
     import axios from 'axios';
 
     export let name;
@@ -26,7 +25,7 @@
     const handleDeleteEvent = async (id) => {
         try {
             const response = await axios.post('https://xtriks.com/api/delete_data_client.php', { id });
-            goto(location.href, { replaceState: true });
+            window.location.reload();
         } catch (error) {
             console.error('Error:', error);
         }

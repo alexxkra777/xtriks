@@ -17,7 +17,6 @@
 
         try {
             const response = await axios.post('https://xtriks.com/api/authorization/function.php', { storeEmail });
-            //console.log(response.data);
             if (Array.isArray(response.data) && response.data.length > 0) {
                 user_id = response.data[0].id; 
             } else {
@@ -26,16 +25,13 @@
         } catch (error) {
             console.error('Error:', error);
         }
-        //console.log(storeEmail);
         await getPosts(); 
     });
 
     const getPosts = async () => {
         try {
             const response = await axios.post('https://xtriks.com/api/clients/function.php', { user_id });
-            //console.log(response.data);
             list.set(response.data);
-           // console.log(list); //
         } catch (error) {
             console.error('Error:', error);
         }

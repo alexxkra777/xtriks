@@ -2,7 +2,7 @@
     <div class="navbar">
         <ul class="menu">
             <li>
-                <a href="../../">Logo</a>
+                <a href="../../" class="logo">Xtriks</a>
             </li>
         </ul>
         <ul class="login">
@@ -79,6 +79,9 @@
     }
     #menuToggle{
         display: none;
+    }
+    .logo{
+        font-size: 25px;
     }
     @media screen and (max-width: 600px) {
         .navbar{
