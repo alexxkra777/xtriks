@@ -1,6 +1,7 @@
 <script>
 	export let showModal; 
-	import icon from "$lib/gallery/close_icon.png"
+	import icon from "$lib/gallery/close_icon.png";
+	import trash from "$lib/gallery/trash.png";
 
 	let dialog; 
 
@@ -14,14 +15,27 @@
 >
 	<div on:click|stopPropagation>
 		<button autofocus on:click={() => dialog.close()}><img src={icon} alt="icon" class="close"></button>
-		<slot name="header" />
+		<div class="grid-container">
+			<div class="grid-item"><h3>Jméno a příjmení</h3><slot name="header" /></div>
+			<div class="grid-item"><h3>Email</h3><slot name="email"/></div>
+			<div class="grid-item"><h3>Narození</h3><slot name="birhday" /></div>
+			<div class="grid-item"><h3>telefon</h3><slot name="tel"/></div>
+			<div class="grid-item"><h3>Pohlaví</h3><slot name="sex"/></div>
+			<div class="grid-item"><h3>Alergeny</h3><slot name="allergens"/></div>
+			<div class="grid-item"><h3>Chronické nemoce</h3><slot name="chronic" /></div>
+			<div class="grid-item"><h3>Těhotenství</h3><slot name="pregancy"/></div>
+			<div class="grid-item"><h3>Ontologické nemoce</h3><slot name="ontology" /></div>
+			<div class="grid-item"><h3>Aktivní virusní nemoce</h3><slot name="viralDiseases"/></div>
+			<div class="grid-item"><h3>Poznámky</h3><slot name="notice"/></div>		
+			<div class="grid-item"><slot name="delete"/></div>
+		</div>
 	</div>
 </dialog>
 
 <style>
 	dialog {
-		width: 20em;
-		height: 15em;
+		width: 40em;
+		height: 45em;
 		border-radius: 0.2em;
 		border: none;
 		padding: 0;
@@ -72,4 +86,23 @@
 		height: 40px;
 		cursor: pointer;
 	}
+	.grid-container {
+		margin-left: 7em;
+    	display: grid;
+    	grid-template-columns: auto auto;
+    	border: 1px solid #e5d5d1;
+    	padding: 10px;
+  	}
+	.grid-item {
+   	 	border: 1px solid #e5d5d1;
+    	padding: 8px;
+  	}
+	h3{
+		font-size: 14px;
+	}
+	  @media screen and (max-width: 600px) {
+		.grid-container{
+			margin-left: 3em;
+		}
+	  }
 </style>

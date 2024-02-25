@@ -187,14 +187,18 @@
         text-align: left;
         text-decoration: line;
     }
-    .submit{
-        background:linear-gradient(to bottom, #44c767 5%, #50b01c 100%);
-        background-color:#44c767;
-    }
-    .submit:hover {
-        background:linear-gradient(to bottom, #50b01c 5%, #44c767 100%);
-        background-color:#50b01c;
-    }
+	.submit{
+		background:linear-gradient(to bottom, #83464F 5%, #83464F 100%);
+		background-color: #83464F;
+        border-color: #e5d5d1;
+        color: #e5d5d1;
+        border-radius: 10px;
+        
+	}
+	.submit:hover {
+		background:linear-gradient(to bottom, #83464F 5%, #83464F 100%);
+		background-color:#83464F;
+	}
     img{
         height: 25px;
         width: 25px;

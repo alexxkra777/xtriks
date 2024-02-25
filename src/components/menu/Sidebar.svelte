@@ -86,6 +86,12 @@
         bottom: 2em;
         left: 3em;
     }
+    @media screen and (max-width: 1200px) {
+        .menu{
+            margin-top: 15em;
+        }  
+    }
+    
     @media screen and (max-width: 600px) {
         .navbar{
             display: none;

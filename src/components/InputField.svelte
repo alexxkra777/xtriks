@@ -29,6 +29,7 @@
         background-color: #F7E8E9;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
+        padding-left: 1%;
     }
 
     .input:focus {

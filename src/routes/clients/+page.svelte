@@ -17,25 +17,25 @@
 
         try {
             const response = await axios.post('https://xtriks.com/api/authorization/function.php', { storeEmail });
-            console.log(response.data);
+            //console.log(response.data);
             if (Array.isArray(response.data) && response.data.length > 0) {
-                user_id = response.data[0].id; // Assuming you only need the first user_id
+                user_id = response.data[0].id; 
             } else {
                 goto('../login');
             }
         } catch (error) {
             console.error('Error:', error);
         }
-        console.log(storeEmail);
-        await getPosts(); // Fetch posts after user_id is set
+        //console.log(storeEmail);
+        await getPosts(); 
     });
 
     const getPosts = async () => {
         try {
             const response = await axios.post('https://xtriks.com/api/clients/function.php', { user_id });
-            console.log(response.data);
+            //console.log(response.data);
             list.set(response.data);
-            console.log(list); // Assuming your PHP file responds with some data
+           // console.log(list); //
         } catch (error) {
             console.error('Error:', error);
         }
@@ -47,7 +47,7 @@
 <div class="flexbox">
     {#if $list.length > 0}
         {#each $list as item (item.id)}
-            <Client name={item.name}></Client>
+            <Client name={item.name} surname={item.surname} birhday={item.birhday} email={item.email} tel={item.tel} sex={item.sex} allergens={item.allergens} chronic={item.chronic} pregancy={item.pregancy} ontology={item.ontology} viralDiseases={item.viralDiseases} notice={item.notice} id={item.id}></Client>
         {/each}
     {:else}
         <p>Loading...</p>
@@ -56,12 +56,15 @@
 </div>
 
 <style>
+    *{
+        font-family: sans-serif;
+    }
     .flexbox {
         display: flex;
         flex-wrap: wrap;
         margin-left: 400px;
         gap: 75px;
-        margin-right: 5px;
+        margin-right: 20px;
         padding-top: 50px;
     }
 

@@ -4,6 +4,7 @@
   import { onMount } from 'svelte';
   import InputField from '../../components/InputField.svelte';
   import BackArrow from "../../components/BackArrow.svelte";
+  import Modal from '../../components/ErrorWindow.svelte';
 
   let storeEmail = null;
   let userId;
@@ -16,16 +17,18 @@
           const response = await axios.post('https://xtriks.com/api/authorization/function.php', { storeEmail });
           console.log(response.data);
           response.data.forEach(item => {
-            userId = item.id; // You can write the data to the console or use it as needed
+            userId = item.id; 
           });
           if(response.data == "error"){
               goto('../login')
           }
       } catch (error) {
           console.error('Error:', error);
-          // Redirect or handle error appropriately
       }
   });
+
+  let showModal = false;
+  let ModalWindow = "";
 
   let name = '';
   let surname = '';
@@ -44,8 +47,11 @@
   const sendData = async () => {
     try {
     const response = await axios.post('https://corsproxy.io/?https://xtriks.com/api/insert_data_clients.php', {userId, name, surname, birhday, sex, allergens, chronic, pregancy, ontology, tel, email, password, viralDiseases, notice})
-    if(response.data == "successfully"){
-      goto('/clients')
+    if(response.data == "Data inserted successfully"){
+      goto('../clients')
+    }else{
+      showModal = true;
+      ModalWindow = "Uživatel s takovým emailem již existuje";
     }
     console.log(response.data);
     } catch (error) {
@@ -53,6 +59,11 @@
     }
   };
 </script>
+
+<Modal bind:showModal>
+  <h2 slot="header">{ ModalWindow }</h2>
+</Modal>
+
 
 <BackArrow href="../clients"></BackArrow>
 <main>
@@ -175,7 +186,7 @@
   }
   textarea:focus {
     outline: none;
-    border-color: #097832;
+    border-color: white;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   }
 
