@@ -86,7 +86,7 @@
         bottom: 2em;
         left: 3em;
     }
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 1400px) {
         .menu{
             margin-top: 15em;
         }  
