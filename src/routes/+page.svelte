@@ -91,6 +91,7 @@
         float: right;
         width: 60%;
         margin-right: 4em;
+        text-align: right;
     }
     .devoleper{
         margin-top: 5em;
