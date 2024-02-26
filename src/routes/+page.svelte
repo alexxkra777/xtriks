@@ -203,10 +203,13 @@
             font-size: 16px;
             margin-left: 2em;
         }
+        .about p{
+            text-align: center;
+        }
         .devoleper{
             margin-top: 5em;
             width: 100%;
-            height: 63em;
+            height: 68em;
             display: flex;
             flex-direction: column;
             align-items: centerů
