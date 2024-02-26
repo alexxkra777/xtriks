@@ -139,7 +139,7 @@
                         <tr>
                             <td>Název události - {item.eventName}</td>
                             <td>Začátek události - {item.hour}:{item.minutes}</td>
-                            <td>Konec události - {item.hourEND}:{item.minutesEND}</td>
+                            <td>Konec události - {item.hour_end}:{item.minutes_end}</td>
                             <td><img src={trash} alt="delete"  role="button" on:click={handleDeleteEvent(item.id)}></td>	
                         </tr>
                     {/each}
