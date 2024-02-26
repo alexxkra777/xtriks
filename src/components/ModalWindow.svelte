@@ -100,7 +100,7 @@
 	h3{
 		font-size: 14px;
 	}
-	  @media screen and (max-width: 600px) {
+	  @media screen and (max-width: 700px) {
 		.grid-container{
 			margin-left: 3em;
 		}

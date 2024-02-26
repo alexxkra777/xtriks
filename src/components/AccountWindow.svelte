@@ -80,7 +80,7 @@
     .centerDiv{
         text-align: center;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 700px) {
         dialog{
             margin-right: 6em;
         }

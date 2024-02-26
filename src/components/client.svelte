@@ -84,7 +84,7 @@
         width: 50px;
         cursor: pointer;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 700px) {
         h2{
             font-size: 15px;
         }

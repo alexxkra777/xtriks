@@ -204,7 +204,7 @@
         width: 25px;
         margin-right: 1%
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 700px) {
         .choise{
             display: flex;
             flex-direction: column;

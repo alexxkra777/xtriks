@@ -98,7 +98,7 @@
 		content: attr(data-title) " ";
 		position: absolute;
 		bottom: 70px;
-		color: #e5d5d1;
+		color: #999;
 		transition: 0.4s ease;
 	}
 	

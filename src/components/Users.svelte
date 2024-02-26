@@ -59,7 +59,7 @@
         color: #83464F;
         font-size: 22px;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 700px) {
         h2{
             font-size: 17px;
         }

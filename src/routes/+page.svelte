@@ -1,6 +1,7 @@
 <script>
     import NavBar from "../components/NavBar.svelte";
     import screenCalendar from "$lib/gallery/screen_calendar.png";
+    import alex from "$lib/gallery/alex.png"
 </script>
 
 
@@ -15,13 +16,16 @@
 <div class="about">
     <h2>O projektů</h2>
     <h3>Tetno projekt by měl výhradně sloužit pro lidi z oborů krásy a zdravý o tělo.</h3>
-    <p>Xtriks CRM systém má v sobě zaimplepované služby pro ukládání uživatelských infromací a vytváření události ve svém kalendáři.<br><br> Každý uživatel má svůj kalendář, kde si může zadávat čas začátku události a čas konce události. Také každý uživatel má svůj list z uživatelů, kde si může znamenat o nich prioritní infromace.<br><br> Následně klienti, po tom co si jim bude vytvořený profil, se mohou přihlásit jako kleinti a uvidí zakládní infromace o vás, aby vás mohli kontaktovat.</p>
+    <p>Xtriks CRM systém má v sobě zaimplepované služby pro ukládání klientských infromací a vytváření události ve svém kalendáři.<br><br> Každý uživatel má svůj kalendář, kde si může zadávat čas začátku události a čas konce události. Také každý uživatel má svůj list z uživatelů, kde si může znamenat o nich prioritní infromace.<br><br> Následně klienti, po tom co si jim bude vytvořený profil, se mohou přihlásit jako kleinti a uvidí zakládní infromace o vás, aby vás mohli kontaktovat.</p>
 </div>
 <div class="devoleper">
-    <h2>O tvůrci projektů</h2>
-    <p>V dnešní době mnoho malých i velkých podniků používá pro svůj přehled CRM systém (řízení vztahů se zákazníky). V době koronaviru se začala moje starší sestra zajímat o kosmetologii a chtěla mít přehled o všech svých klientech. Když jsme spolu začali hledat nějaký takový systém, který by byl jednoduchý k používání, přehledný a cenově dostupný, tak jsme nenašli nic, co by se nám líbilo.</p>
-    <p>Začal jsem přemýšlet, jak to udělat technicky,  jaké funkce by aplikace měla mít a vymýšlel celou logiku aplikace. Provedl jsem několik konzultací s kosmetoložky, abych čerpal z jejich zkušeností, co by potřebovali k užívání. Vytvořil jsem si v hlavě obrázek o možném výsledků, má představa je: stránka s  informacemi o klientovi (narozeniny, jméno, nemoci, těhotenství, kontakty, …) a rezervační systém.</p>
-    <p>Mojí největší motivací na projektu je, že bych jej chtěl dále zlepšovat a prodávat licenci na daný systém. V ideálních podmínkách by software mohli začít používat všichni dříve zmíněné potenciální uživatelé a také doktoři. Klienti by měli přehledně v jedné aplikaci všechny svoje kosmetoložky, doktory atd, a nemuseli by za to nic platit, protože licence by platili jen uživatelé CRM. </p>
+    <div class="text">
+        <h2>O tvůrci projektů</h2>
+        <p>V dnešní době mnoho malých i velkých podniků používá pro svůj přehled CRM systém (řízení vztahů se zákazníky). V době koronaviru se začala moje starší sestra zajímat o kosmetologii a chtěla mít přehled o všech svých klientech. Když jsme spolu začali hledat nějaký takový systém, který by byl jednoduchý k používání, přehledný a cenově dostupný, tak jsme nenašli nic, co by se nám líbilo.</p>
+        <p>Začal jsem přemýšlet, jak to udělat technicky,  jaké funkce by aplikace měla mít a vymýšlel celou logiku aplikace. Provedl jsem několik konzultací s kosmetoložky, abych čerpal z jejich zkušeností, co by potřebovali k užívání. Vytvořil jsem si v hlavě obrázek o možném výsledků, má představa je: stránka s  informacemi o klientovi (narozeniny, jméno, nemoci, těhotenství, kontakty, …) a rezervační systém.</p>
+        <p>Mojí největší motivací na projektu je, že bych jej chtěl dále zlepšovat a prodávat licenci na daný systém. V ideálních podmínkách by software mohli začít používat všichni dříve zmíněné potenciální uživatelé a také doktoři. Klienti by měli přehledně v jedné aplikaci všechny svoje kosmetoložky, doktory atd, a nemuseli by za to nic platit, protože licence by platili jen uživatelé CRM. </p>
+    </div>
+    <img src={alex} alt="developer">
 </div>
 <div class="contact">
     <h2>Kontakty</h2>
@@ -46,8 +50,8 @@
     .header h1{
         color: #83464F;
         margin-top: 3em;
-        margin-right: 0.5em;
-        margin-left: 0.2em;
+        margin-right: 5em;
+        margin-left: 5em;
     }
     .header .h2{
         font-size: 23px;
@@ -56,7 +60,7 @@
         margin-right: 0.5em;
     }
     .screen_calendar{
-        width: 30em;
+        width: 45em;
         float: right;
         border: 15px solid #83464F;
         border-radius: 20px;
@@ -93,8 +97,11 @@
         width: 100%;
         height: 30em;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start
+    }
+    .devoleper .text{
+        flex-direction: column;
     }
     .devoleper h2{
         font-size: 35px;
@@ -113,6 +120,10 @@
         float: left;
         width: 60%;
         margin-left: 4em;
+    }
+    .devoleper img{
+        height: 350px;
+        margin-right: 10em;
     }
     .contact{
         margin-top: 5em;
@@ -146,15 +157,73 @@
     .footer p{
         color: white;
     }
-    @media screen and (max-width: 600px) {
-        .header{
-            flex-direction: column;
+    @media screen and (max-width: 1400px) {
+        .header h1{
+            margin-right: 0.5em;
+            margin-left: 0.5em;
         }
         .screen_calendar{
-        width: 20em;
-        border: 7.5px solid #83464F;
-        border-radius: 20px;
+            width: 35em;
+        }
+        .devoleper{
+            height: 35em;
+            display: flex;
+        }
+        .devoleper img{
+            height: 300px;
+            margin-right: 8em;
+        }
     }
+    @media screen and (max-width: 700px) {
+        .header{
+            flex-direction: column;
+            align-items: center;
+        }
+        .header h1{
+            margin-top: 1em;
+            margin-right: 0.5em;
+            margin-left: 0.5em;
+        }
+        .screen_calendar{
+            width: 20em;
+            border: 7.5px solid #83464F;
+            border-radius: 20px;
+        }
+        .about{
+            margin-top: 5em;
+            height: 45em;
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+        .about h3{
+            color: white;
+            float: right;
+            font-size: 16px;
+            margin-left: 2em;
+        }
+        .devoleper{
+            margin-top: 5em;
+            width: 100%;
+            height: 63em;
+            display: flex;
+            flex-direction: column;
+            align-items: centerů
+        }
+        .devoleper h2{
+            margin-left: 2em;
+        }
+        .devoleper h3{
+            margin-left: 2em;
+        }
+        .devoleper p{
+            text-align: center;
+        }
+        .devoleper img{
+            height: 200px;
+            margin-left: 3em;
+        }
+        
     }
 
 </style>

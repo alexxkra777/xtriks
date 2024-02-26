@@ -331,7 +331,7 @@
         width: 20px;
         cursor: pointer;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 700px) {
 		.calendar{
             margin-left: 0px;
             margin-right: 0px;

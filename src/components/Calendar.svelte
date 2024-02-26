@@ -167,7 +167,7 @@
 			padding: 30px 5px;
 		}
 	}
-	@media screen and (max-width: 600px) {
+	@media screen and (max-width: 700px) {
 		.weekdays li {
 			width: 10.6%;
 		}

@@ -25,22 +25,17 @@
 </main>
 
 <style>
-
-	@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 	
 	* {
 		box-sizing: border-box;
     font-family: sans-serif;
 	}
 
-	main {
-		font-family: 'Muli', sans-serif;
+	 main{
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 100vh;
 		overflow: hidden;
-		margin: 0;
 	}
 
 	.btn {
@@ -73,4 +68,5 @@
 		margin-top: 1rem;
 		text-align: center;
 	}
+
 </style>
