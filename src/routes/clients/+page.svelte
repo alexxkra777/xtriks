@@ -66,7 +66,7 @@
 
     @media screen and (max-width: 700px) {
         .flexbox {
-            margin-left: 0px;
+            margin-left: 1em;
             margin-right: 0px;
             gap: 50px;
         }

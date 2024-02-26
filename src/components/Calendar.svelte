@@ -168,8 +168,14 @@
 		}
 	}
 	@media screen and (max-width: 700px) {
+		.weekdays{
+			text-align: center;
+		}
 		.weekdays li {
 			width: 10.6%;
+		}
+		.days li {
+			padding: 30px 10px;
 		}
 	}
 </style>
