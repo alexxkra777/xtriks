@@ -96,11 +96,19 @@
     const handleDeleteEvent = async (id) => {
         try {
             const response = await axios.post('https://xtriks.com/api/delete_data_calendar.php', { id });
-            console.log(response.data); 
+            //console.log(response.data); 
             readData();
         } catch (error) {
             console.error('Error:', error);
         }
+    }
+    function addLeadingZero(value) {
+        // Ověřit, zda je hodnota mezi 1 a 9
+        if (value >= 1 && value <= 9) {
+            // Přidat nulu před hodnotu
+            return "0" + value;
+        }
+        return value;
     }
 </script>
 
@@ -135,11 +143,11 @@
                             <button class="addBtn">Přidat</button>
                         </div>  
                     </header>
-                	{#each $list as item (item.id)}                        
+                    {#each $list as item (item.id)}                        
                         <tr>
-                            <td>Název události - {item.eventName}</td>
-                            <td>Začátek události - {item.hour}:{item.minutes}</td>
-                            <td>Konec události - {item.hour_end}:{item.minutes_end}</td>
+                            <td>Název události - {item.event_name}</td>
+                            <td>Začátek události - {addLeadingZero(item.hour)}:{addLeadingZero(item.minutes)}</td>
+                            <td>Konec události - {addLeadingZero(item.hour_end)}:{addLeadingZero(item.minutes_end)}</td>
                             <td><img src={trash} alt="delete"  role="button" on:click={handleDeleteEvent(item.id)}></td>	
                         </tr>
                     {/each}

@@ -61,7 +61,7 @@
 		<InputField label={'Příjmení'} bind:value={surname}/>
 		<InputField type={'email'} label={'Email'} bind:value={email}/>
 		<InputField type={'password'} label={'Heslo'} bind:value={password}/>
-        <InputField label={'Podnikání'} bind:value={bussines}/>
+        <InputField label={'Obor'} bind:value={bussines}/>
 	{:else if active_step == 'Adresa'}
 		<InputField label={'Adresa'} bind:value={adress}/>
 		<InputField label={'Město'} bind:value={city}/>

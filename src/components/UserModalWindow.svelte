@@ -17,7 +17,7 @@
 		<div class="grid-container">
 			<div class="grid-item"><h3>Jméno a příjmení</h3><slot name="header" /></div>
 			<div class="grid-item"><h3>Email</h3><slot name="email"/></div>
-			<div class="grid-item"><h3>Podnikání</h3><slot name="bussines" /></div>
+			<div class="grid-item"><h3>Obor</h3><slot name="bussines" /></div>
 			<div class="grid-item"><h3>Adresa</h3><slot name="adress"/></div>
 			<div class="grid-item"><h3>Město</h3><slot name="city"/></div>
 		</div>
