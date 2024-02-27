@@ -104,7 +104,7 @@
     }
     function addLeadingZero(value) {
         // Ověřit, zda je hodnota mezi 1 a 9
-        if (value >= 1 && value <= 9) {
+        if (value >= 0 && value <= 9) {
             // Přidat nulu před hodnotu
             return "0" + value;
         }
